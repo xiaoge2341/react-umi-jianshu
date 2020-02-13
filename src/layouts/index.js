@@ -21,21 +21,30 @@ import {
  class BasicLayout extends Component {
    render(){
      
-    let {dispatch,focused,list} = this.props
-    console.log(list && list.data.list)
+    let {dispatch,focused,list,mouseIn} = this.props
+    console.log(list && list.data.data)
+
+    
     const getListArea = () => {
-      // console.log()
-      if(focused) {
+      let data = list && list.data.data
+      // console.log(list)
+      if(focused || mouseIn) {
         return (
-        <SearchInfo>
+        <SearchInfo
+          onMouseEnter = {()=>dispatch({type:'headers/headerSearch'})}
+          onMouseLeave = {()=>dispatch({type:'headers/mouseOut'})}
+          
+        >
           <SearchInfoTitle>
             热门搜索
-            <SearchInfoSwitch>
+            <SearchInfoSwitch
+              onClick = {()=>dispatch({type:'headers/headerSearch'})}
+            >
               换一批
             </SearchInfoSwitch>
           </SearchInfoTitle>
           <div>
-            {list && list.data.list.map((value,index) => {
+            {data && data.map((value,index) => {
               return (
               <SearchInfoItem key = {index}>
                 {value.name}
@@ -66,7 +75,7 @@ import {
                     placeholder='搜索'
                     className = {focused ? 'focused' : ''}
                     onFocus = {()=>dispatch({type:'headers/headerSearch'})}
-                    onBlur = {()=>dispatch({type:'headers/notFocused'})}
+                    onBlur = {()=>dispatch({type:'headers/headerSearch'})}
                   ></NavSearch>
                   <i 
                     className = {focused ? 'focused iconfont' : 'iconfont'}
@@ -95,6 +104,7 @@ const mapStateToProps = (state) => {
   // console.log('header state',state)
   return {
     focused:state.headers.focused,
+    mouseIn:state.headers.mouseIn,
     list: state.headers.list
   }
 }
