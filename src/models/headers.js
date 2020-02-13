@@ -2,7 +2,8 @@ import axios from 'axios'
 export default {
   state: { 
     focused:false,
-    list:null
+    list:null,
+    mouseIn:false,
   },
   reducers: {
     'focused' (state, action) {
