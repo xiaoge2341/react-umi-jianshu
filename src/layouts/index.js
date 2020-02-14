@@ -27,11 +27,14 @@ import {
     
     const getListArea = () => {
       let data = list && list.data.data
+      // const changeList = (data) => {
+      //   totalPage: 
+      // }
       // console.log(list)
       if(focused || mouseIn) {
         return (
         <SearchInfo
-          onMouseEnter = {()=>dispatch({type:'headers/headerSearch'})}
+          onMouseEnter = {()=>dispatch({type:'headers/mouseChange'})}
           onMouseLeave = {()=>dispatch({type:'headers/mouseOut'})}
           
         >
@@ -75,7 +78,7 @@ import {
                     placeholder='搜索'
                     className = {focused ? 'focused' : ''}
                     onFocus = {()=>dispatch({type:'headers/headerSearch'})}
-                    onBlur = {()=>dispatch({type:'headers/headerSearch'})}
+                    onBlur = {()=>dispatch({type:'headers/notFocused'})}
                   ></NavSearch>
                   <i 
                     className = {focused ? 'focused iconfont' : 'iconfont'}
@@ -101,7 +104,7 @@ import {
 }
 
 const mapStateToProps = (state) => {
-  // console.log('header state',state)
+  console.log('header state',state)
   return {
     focused:state.headers.focused,
     mouseIn:state.headers.mouseIn,

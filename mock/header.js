@@ -7,13 +7,10 @@ import Mock from 'mockjs'
 // })
 // }
 export  default  {
-  'GET /api/list' : Mock.mock({
+  '/api/list' : Mock.mock({
 
-    'data|5-10': [{
+    'data|5-15': [{
       name: '@cname',
-      email: '@email',
-      'value|1-100': 50,
-      'type|0-2':1
     }]
   
   })

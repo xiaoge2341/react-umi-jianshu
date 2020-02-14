@@ -4,28 +4,29 @@ export default {
   state: { 
     focused:false,
     list:null,
-    mouseIn:false
+    mouseIn:false,
+
   },
   reducers: {
     'focused' (state, action) {
       return {
         focused:true,
         list:action.list,
-        mouseIn:true
+        mouseIn:true,
       }
     },
     'notFocused' (state, action) {
       return {
         focused:false,
-        list:null,
-        mouseIn:true
+        list:action.list,
+        mouseIn:false
       }
     },
     'mouseEnter' (state, action) {
       return {
         mouseIn: true,
         list: action.list,
-        focused: true,
+        focused: false,
       }
     },
     'mouseOut' (state, action) {
@@ -39,13 +40,14 @@ export default {
   effects: {
     * headerSearch({payload}, {call,put,take}){
       const lists = yield call(axios.get,'/api/list')
+      yield console.log('lists',lists)
       yield put({type:'headers/focused',list:lists})
       
       
     },
     * mouseChange({payload}, {call, put}) {
       const lists = yield call(axios.get,'/api/list')
-      yield put({type:'headers/focused',list:lists})
+      yield put({type:'headers/mouseEnter',list:lists})
     }
   }
 }
