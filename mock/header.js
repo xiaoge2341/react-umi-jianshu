@@ -9,7 +9,7 @@ import Mock from 'mockjs'
 export  default  {
   '/api/list' : Mock.mock({
 
-    'data|5-15': [{
+    'data|25-55': [{
       name: '@cname',
     }]
   

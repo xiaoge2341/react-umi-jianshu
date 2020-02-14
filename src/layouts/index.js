@@ -20,40 +20,39 @@ import {
   
  class BasicLayout extends Component {
    render(){
-     
-    let {dispatch,focused,list,mouseIn} = this.props
-    console.log(list && list.data.data)
-
+    let {dispatch, focused, list, mouseIn, page, totalPage} = this.props
     
     const getListArea = () => {
       let data = list && list.data.data
-      // const changeList = (data) => {
-      //   totalPage: 
-      // }
-      // console.log(list)
+      const pageList = []
+      // console.log(data,list)
       if(focused || mouseIn) {
+        let listNum = page<totalPage ? page*10 :data.length //如果list数量是23则前两次是page*10也就是0-10,10-20,第三次是data.length也就是20-23而不是20-30
+
+        for(let i = (page-1)*10; i<listNum; i++) {
+          data && pageList.push(
+            <SearchInfoItem key = {data[i].name}>
+                {data[i].name}
+            </SearchInfoItem>
+          )
+        }
+
         return (
         <SearchInfo
-          onMouseEnter = {()=>dispatch({type:'headers/mouseChange'})}
+          onMouseEnter = {()=>dispatch({type:'headers/mouseEnter'})}
           onMouseLeave = {()=>dispatch({type:'headers/mouseOut'})}
           
         >
           <SearchInfoTitle>
             热门搜索
             <SearchInfoSwitch
-              onClick = {()=>dispatch({type:'headers/headerSearch'})}
+              onClick = {()=>dispatch({type:'headers/pageChange'})}
             >
               换一批
             </SearchInfoSwitch>
           </SearchInfoTitle>
           <div>
-            {data && data.map((value,index) => {
-              return (
-              <SearchInfoItem key = {index}>
-                {value.name}
-              </SearchInfoItem>
-              )
-            })}
+            {pageList}
             
           </div>
         </SearchInfo>
@@ -104,11 +103,13 @@ import {
 }
 
 const mapStateToProps = (state) => {
-  console.log('header state',state)
+  // console.log('header state',state)
   return {
     focused:state.headers.focused,
     mouseIn:state.headers.mouseIn,
-    list: state.headers.list
+    list: state.headers.list,
+    page: state.headers.page,
+    totalPage:state.headers.totalPage
   }
 }
 export default connect(mapStateToProps)(BasicLayout);
