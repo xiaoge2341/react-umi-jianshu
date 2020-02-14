@@ -10,7 +10,7 @@ export  default  {
   '/api/list' : Mock.mock({
 
     'data|25-55': [{
-      name: '@cname',
+      name: '@cname@city',
     }]
   
   })

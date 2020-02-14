@@ -106,12 +106,23 @@ export const SearchInfoTitle = styled.div`
     margin: 20px 0 15px 0;
     line-height: 20px;
     font-size: 15px;
-    color:#969696
-
+    color:#969696;
+    
 `;
 export const SearchInfoSwitch = styled.span`
     float: right;
+    display:block;
     font-size: 14px;
+    .spin{
+        float:left;
+        position:relative;
+        display:block;
+        margin: -1px -10px 0 0;
+        transition: transform .5s ease 0s;
+        transform-origin:center center;
+        transform: rotate(0deg);
+        
+    }
 `;
 export const SearchInfoItem = styled.a`
     display: block;

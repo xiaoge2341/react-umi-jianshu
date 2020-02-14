@@ -43,11 +43,14 @@ export default {
     'mouseOut' (state, action) {
       return {
         mouseIn: false,
-        list: null,
-        focused: false
+        list: state.list,
+        focused: false,
+        totalPage:state.totalPage,
+        page:1
       }
     },
     'pageChange' (state,action) {
+      
       // console.log(state)
       //控制页码page的变化，因为从1开始计数，所以总页数要-1
       if(state.page>state.totalPage-1) {
@@ -76,18 +79,8 @@ export default {
       yield take({type:'headers/mouseEnter',list:lists,totalPage:totalPage})
       yield take({type:'headers/notFocused',list:lists,totalPage:totalPage})
       yield take({type:'headers/pageChange',totalPage:totalPage,list:lists})
+      yield take({type:'headers/mouseOut',totalPage:totalPage,list:lists})
     },
 
-    // * mouseChange({payload}, {call, put}) {
-    //   const lists = yield call(axios.get,'/api/list')
-    //   const totalPage =yield Math.ceil(lists.data.data.length/10)
-    //   yield put({type:'headers/mouseEnter',list:lists,totalPage:totalPage})
-    // },
-
-    // * listChange({payload}, {call, put}) {
-    //   const lists = yield call(axios.get,'/api/list')
-    //   const totalPage =yield Math.ceil(lists.data.data.length/10)
-    //   yield put({type:'headers/pageChange',totalPage:totalPage,list:lists})
-    // }
   }
 }
