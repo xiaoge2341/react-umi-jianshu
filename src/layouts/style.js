@@ -32,6 +32,7 @@ export const NavItem = styled.div`
     padding:0 15px;
     font-size:17px;
     color:#333;
+    cursor:pointer;
     &.left {
         float: left;
     }
@@ -58,6 +59,7 @@ export const SearchWrapper = styled.div`
         line-height: 30px;
         text-align: center;
         border-radius:15px;
+        cursor:pointer;
         &.focused {
             background: #777;
             color:#fff;
@@ -97,7 +99,7 @@ export const SearchInfo = styled.div`
     left: 0;
     top: 56px;
     width:240px;
-    
+    background:#fff;
     padding: 0 20px;
     box-shadow: 0 0 8px rgba(0,0,0,.2)
     
@@ -113,6 +115,7 @@ export const SearchInfoSwitch = styled.span`
     float: right;
     display:block;
     font-size: 14px;
+    cursor:pointer;
     .spin{
         float:left;
         position:relative;
@@ -153,10 +156,12 @@ export const Button = styled.div`
     border-radius: 19px;
     border:1px solid #ec6149;
     font-size: 14px;
+    cursor:pointer;
     &.reg {
         color: #ec6149;
     }
     &.writting {
+        
         color: #fff;
         background: #ec6149;
     }

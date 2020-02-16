@@ -1,6 +1,7 @@
 
 import React, {Component} from 'react'
 import { connect } from 'dva'
+// import Link from 'umi/link'
 import { GlobalstyleIcon } from './../assets/iconfont/iconfont.js'
 import {
   HeaderWrapper,
@@ -103,6 +104,7 @@ import {
                 </Button>
             </Addition>
         </HeaderWrapper>
+        
         
         {this.props.children}
 
