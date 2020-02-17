@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
 import styles from './../index.less'
 import { connect } from 'dva'
+
  class Writer extends Component {
   render() {
     let { writer } = this.props
+ 
     return (
       <div>
         <ul className = {styles.writer}>
           <span className= {styles.intrWriter}>推荐作者</span>
-          <span className = {styles.changeWriter}>
+          <span className = {styles.changeWriter}
+            // onClick = {}
+          >
             <i className='iconfont'>&#xe851;</i> 
           换一批</span>
           {
@@ -41,3 +45,4 @@ const matStateToProps = (state) => {
   }
 }
 export default connect(matStateToProps)(Writer)
+

@@ -4,17 +4,19 @@ import { connect } from 'dva'
 // import axios from 'axios'
  class List extends Component {
   render() {
-    let {list} = this.props 
-    // console.log(list)
+    let {list, dispatch, addList} = this.props 
+    // console.log(this.props)
+    // console.log('addList',addList)
+    // console.log('list', list)
+    list = addList ? list.concat(addList) : list
     return (
-      
     <div>
       {
         list.map((value,index) => {
           return (
       <div className = {styles.ListItem} key={index}>
         <div className={styles.listleft}>
-          <h3>{value.title}</h3>
+          <h3>{value.listTitle}</h3>
           <p className={styles.listContent}>{value.listContent}</p>
           <p className={styles.listMeta}>
             <span className ='iconfont'>&#xe609; {value.listRace}</span>
@@ -29,6 +31,9 @@ import { connect } from 'dva'
         )
         })
       }
+      <a href = 'script:;' className = {styles.learnMore}
+        onClick = {()=>dispatch({type:'home/addList'})}
+      >阅读更多</a>
       
     </div>
     
@@ -39,7 +44,10 @@ import { connect } from 'dva'
 const mapStateToProps = (state) => {
   // console.log('state', state)
   return {
-    list:state.home.list
+    list:state.home.list,
+    addList: state.home.addList
   }
-}
+};
+
+
 export default connect(mapStateToProps)(List)

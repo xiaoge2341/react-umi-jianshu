@@ -1,28 +1,29 @@
-export default { 'GET /api/homeList':[{
-  listTitle:'43岁的她和舒淇同框，谁的气色更胜一筹？', //标题
-  listContent:'说到娱乐圈的好闺蜜，比如说刘涛和李小冉，杨幂和唐嫣，林心如和舒淇等等，她们能在娱乐圈结下深厚的友谊也真是难得。比如李小冉生小宝宝的时候，闺蜜刘涛...', //内容
-  listImg:'//upload-images.jianshu.io/upload_images/8006104-a97dd6d9216300e2.png?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240', //图片
-  listNickName:'幸运的那一个', //上传用户
-  listRace:'9.4', //评分
-  listComment:'4', //评论
-  listLike:'22' //喜欢，点赞
-}, {
-  listTitle:'增强Mybatis处理多表查询 我再也不用写VO类!!!', //标题
-  listContent:'每当我们辛苦的解决好表与表之间的耦合时（就是解决好表与表之间的字段冗余） ,然后就会发现比较棘手的问题是联表查询困难至极（主要是定义关联类或者定...', //内容
-  listImg:'https://upload-images.jianshu.io/upload_images/9368544-ce7fff9b74f62527.png?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240', //图片
-  listNickName:'hihuzi', //上传用户
-  listRace:'7.5', //评分
-  listComment:'14', //评论
-  listLike:'90' //喜欢，点赞
-}, {
-  listTitle:'百度网盘？小意思，这款下载器照样下载！不限速！不登陆！', //标题
-  listContent:'今天要提起一件大家都关注的问题，那就是百度网盘了。百度网盘什么情况，大家应该再熟悉不过了，就不自在啰嗦了。 相信酷友们都能想到，今天推荐的神器了...', //内容
-  listImg:'//upload-images.jianshu.io/upload_images/2670527-a35884e304f3980f?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240', //图片
-  listNickName:'库长', //上传用户
-  listRace:'31.4', //评分
-  listComment:'13', //评论
-  listLike:'395' //喜欢，点赞
-},
-
-]
+export default {
+  'GET /api/homeList':{
+    list:[{
+      listTitle:'如果速度超越光速会怎么样？会发生什么事呢？', //标题
+      listContent:'虽然针对不可能发生的问题，讨论发生后会怎么样是没有太大意义的，不过我还是以现有的科学框架讨论下题主的问题。 首先，我们要决定是以什么方式超越光速......', //内容
+      listImg:'//upload-images.jianshu.io/upload_images/16201559-0f88120b19bd540a.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240', //图片
+      listNickName:'奥秘365', //上传用户
+      listRace:'2.4', //评分
+      listComment:'15', //评论
+      listLike:'22' //喜欢，点赞
+    }, {
+      listTitle:'《绿皮书》三天票房破亿，韩寒评价：一部杰作，接近完美！', //标题
+      listContent:'第91届奥斯卡金像奖结束没多久，荣获最佳影片，最佳男配角和最佳原创剧本三项大奖的《绿皮书》就已经赶上档期在国内上映。说起来，《绿皮书》早在去年1...', //内容
+      listImg:'//upload-images.jianshu.io/upload_images/10955200-ccbcdfbd17bc44f7?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240', //图片
+      listNickName:'hihuzi', //上传用户
+      listRace:'7.5', //评分
+      listComment:'14', //评论
+      listLike:'90' //喜欢，点赞
+    }, {
+      listTitle:'男女反串婚纱照好看不?反串婚纱照如何拍?', //标题
+      listContent:'现在的年轻人拍摄婚纱照都想要特别，一些摄影楼就会想出很特别的点子，比如说反串拍摄婚纱，意思就是男生穿婚纱，女生穿西装，然后拍摄一组婚纱照，这样的...', //内容
+      listImg:'//upload-images.jianshu.io/upload_images/7272025-399d5097990a0085.JPG?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240', //图片
+      listNickName:'库长', //上传用户
+      listRace:'31.4', //评分
+      listComment:'13', //评论
+      listLike:'395' //喜欢，点赞
+    },]
+  }
 }
