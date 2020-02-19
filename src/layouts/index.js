@@ -1,7 +1,7 @@
 
 import React, {Component} from 'react'
 import { connect } from 'dva'
-// import Link from 'umi/link'
+import Link from 'umi/link'
 import { GlobalstyleIcon } from './../assets/iconfont/iconfont.js'
 import {
   HeaderWrapper,
@@ -15,7 +15,11 @@ import {
   SearchInfo,
   SearchInfoTitle,
   SearchInfoSwitch,
-  SearchInfoItem
+  SearchInfoItem,
+  DetailWraper,
+  DetailTitle,
+  DetailRight
+
 } from './style'
   
  class BasicLayout extends Component {
@@ -76,7 +80,9 @@ import {
         <HeaderWrapper>
           <Logo href='/'></Logo>
             <Nav>
-              <NavItem className='left active'>首页</NavItem>
+              <Link to='/'>
+                <NavItem className='left active'>首页</NavItem>
+              </Link>
               <NavItem className='left'>下载App</NavItem>
               <NavItem className='right'>登录</NavItem>
               <NavItem className='right'>
@@ -103,8 +109,17 @@ import {
                     写文章
                 </Button>
             </Addition>
+        <DetailWraper>
+          <DetailTitle>
+          43岁的她和舒淇同框，谁的气色更胜一筹？
+          </DetailTitle>
+          <DetailRight>
+
+          </DetailRight>
+        </DetailWraper>
         </HeaderWrapper>
         
+        {/* detailWraper 详情页下滑显示 */}
         
         {this.props.children}
 

@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import styles from './../index.less'
-export default class Recommend extends Component {
+export default class Recommend extends PureComponent {
   render() {
     return (
       <div className = {styles.Recommend}>

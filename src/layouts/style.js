@@ -3,10 +3,12 @@ import logoPic from './../assets/logo.jpg'
 
 export  const HeaderWrapper = styled.div`
     position: fixed;
+    overflow:hidden;
     top:0;
     width:100%;
     background:#fff;
-    height:58px;
+    overflow:hidden;
+    
     border-bottom: 1px solid #f0f0f0;
 `;
 export  const Logo = styled.a`
@@ -170,5 +172,22 @@ export const Button = styled.div`
     }
 `;
 
+//detailWraper
+export const DetailWraper = styled.div`
+    display:none;
+    width:1000px;
+    height:56px;
+    background:#09f;
+    margin:58px auto 0;
+`;
+export const DetailTitle = styled.div`
+    color:#040404;
+    padding:0 24px;
+    font-size:24px;
+    line-height:56px;
+`;
+export const DetailRight = styled.div`
+
+`;
 
 

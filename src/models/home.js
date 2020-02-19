@@ -1,5 +1,23 @@
 import axios from 'axios'
 import { throttle } from 'redux-saga/effects'
+// import {} from ''
+function throttling(fn, wait, maxTimelong) {
+  var timeout = null,
+      startTime = Date.parse(new Date);
+
+  return function() {
+      if(timeout !== null) clearTimeout(timeout);
+      var curTime = Date.parse(new Date);
+      if(curTime-startTime>=maxTimelong) {
+          fn();
+          startTime = curTime;
+      } else {
+          timeout = setTimeout(fn, wait);
+      }
+  }
+}
+
+
 export default {
   state:{
     topic: [],
@@ -50,21 +68,23 @@ export default {
     },
     * changeWriter ({payload}, {put, take, call}) {
       // const Writers = yield 
-    }
+    },
+    
   },
   subscriptions: {
 
     setup({dispatch,history}){
-      window.onscroll = () => {
-        // console.log(window.scrollY)
-        
+        const showBackTop = () => {
           if(window.scrollY > 200) {
             // @throttle
             dispatch({type:'showBackTop',showBackTop:true})
           } else {
             dispatch({type:'showBackTop',showBackTop:false})
           }
-      }
+        }
+
+        window.addEventListener('scroll', throttling(showBackTop, 300, 1000));
+
        
     }
   }

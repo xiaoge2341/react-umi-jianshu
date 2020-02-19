@@ -6,6 +6,7 @@ import List from './components/List'
 import Recommend from './components/Recommend'
 import Topic from './components/Topic'
 import { connect } from 'dva';
+
 // import { formatMessage } from 'umi-plugin-locale';
 
 class Home extends Component {
