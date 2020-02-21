@@ -2,9 +2,9 @@
 import React, {Component} from 'react'
 import { connect } from 'dva'
 import Link from 'umi/link'
+import styles from './index.less'
 import { GlobalstyleIcon } from './../assets/iconfont/iconfont.js'
 import {
-  HeaderWrapper,
   Logo,
   Nav,
   NavItem,
@@ -16,15 +16,20 @@ import {
   SearchInfoTitle,
   SearchInfoSwitch,
   SearchInfoItem,
-  DetailWraper,
-  DetailTitle,
-  DetailRight
+ 
 
 } from './style'
+
   
  class BasicLayout extends Component {
    render(){
-    let {dispatch, focused, list, mouseIn, page, totalPage} = this.props
+    let {dispatch, focused, list, mouseIn, page, totalPage, headerTitle,headerWriter, location,navShow} = this.props
+    // console.log(this.props)
+    let userId = location.query.userId
+   
+    
+    let navChange = navShow&&navShow ? styles.navChange : ''
+    // console.log(navShow,navChange)
     const getListArea = () => {
       let data = list && list.data.data
       const pageList = []
@@ -77,10 +82,14 @@ import {
     return (
       <div>
         <GlobalstyleIcon />
-        <HeaderWrapper>
+        
+      <header 
+        className = {`${styles.header} ${navChange}`} 
+      >
+        <div className = {styles.HeaderWrapper}>
           <Logo href='/'></Logo>
             <Nav>
-              <Link to='/'>
+              <Link  to='/'>
                 <NavItem className='left active'>首页</NavItem>
               </Link>
               <NavItem className='left'>下载App</NavItem>
@@ -109,16 +118,45 @@ import {
                     写文章
                 </Button>
             </Addition>
-        <DetailWraper>
-          <DetailTitle>
-          43岁的她和舒淇同框，谁的气色更胜一筹？
-          </DetailTitle>
-          <DetailRight>
+        </div>
 
-          </DetailRight>
-        </DetailWraper>
-        </HeaderWrapper>
+        {
+           headerTitle.map((value,index) => {
+            // console.log(userId,value.id)
+            if(userId === value.id) {
+              return(
+                <div className = {styles.DetailWraper} key={index}>
+                  <div className = {styles.DetailTitle}>
+                  {value.listTitle}
+                  </div>
+
+                 {/* 由于mock数据是topic,writer,list三部分，所以只能凑合这样遍历 */}
+
+                  {
+                    headerWriter.map((value,index) => {
+                      if (userId === value.id) {
+                        return (
+                          <div className = {styles.DetailRight} key = {index}>
+                            <img src={value.face} alt=""/>
+                            <span>{value.name}</span>
+                            <span className = {styles.attention}>关注</span>
+                            <span className = {styles.admire}>赞赏支持</span>
+                          </div>
+                        )
+                      }
+                      return true;
+                    })
+                  }
+
+                  
+                </div>
+              )
+            }
+            return true;
+          })
+        }
         
+      </header>
         {/* detailWraper 详情页下滑显示 */}
         
         {this.props.children}
@@ -135,7 +173,13 @@ const mapStateToProps = (state) => {
     mouseIn:state.headers.mouseIn,
     list: state.headers.list,
     page: state.headers.page,
-    totalPage:state.headers.totalPage
+    totalPage:state.headers.totalPage,
+
+    headerTitle: state.details.list, //下面这两是为了获取顶部导航的数据
+    headerWriter: state.details.writer,
+
+    //控制detail页鼠标滚轮上下滑的动作
+    navShow: state.details.navShow
   }
 }
 export default connect(mapStateToProps)(BasicLayout);

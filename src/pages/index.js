@@ -21,7 +21,7 @@ class Home extends Component {
   render() {
     let { backTop, } = this
     let {showBackTop} = this.props
-    // console.log(showBackTop)
+    // console.log(this.props)
     return (
       <div className={styles.HomeWrapper}>
         

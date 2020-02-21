@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import styles from './../index.less'
 import {connect} from 'dva'
+
+
  class left extends Component {
   render() {
     let {list,writer} = this.props.details

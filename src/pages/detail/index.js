@@ -3,21 +3,27 @@ import styles from './index.less'
 import { connect } from 'dva'
 import Left from './components/left'
 import Right from './components/right'
+
+
+
  class detail extends Component {
-   constructor(){
-     super()
+   constructor(props){
+     super(props)
      this.backTop = this.backTop.bind(this)
+      // console.log(props)
    }
+  
   backTop(){
     window.scrollTo(0,0)
   }
+  
   render() {
     // console.log(this.props)
     let {list,writer} = this.props.details
-    let {showBackTop} = this.props
+    let {showBackTop,} = this.props
     let {backTop} = this
     // console.log(list && writer == '')
-    
+
     return (
       <div>
         {
@@ -36,21 +42,31 @@ import Right from './components/right'
       </div>
     )
   }
-  // componentWillMount() {
-  //   // let {dispatch} = this.props
-    
-  // }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  dispatch({type:'details/changeHomeData'})
+//注意！！！
+  // mapDispatchToProps使用了dispatch之后，上面的render失去dispatch
+const mapDispatchToProps = (dispatch,location) => { 
+  window.onmousewheel = (e) => {
+    console.log(location)
+    if(e.deltaY > 0 && location.location.pathname === '/detail') {
+      //应用类，把作者信息换到顶部导航
+      dispatch({type:'details/changeNav',NavShow:true})
+    } else {
+      // 取消类,把搜索导航显示
+      dispatch({type:'details/changeNav',NavShow:false})
+    }
+  }
+  // console.log(dispatch)
+  dispatch({type:'details/changeHomeData',payload:{id:1,name:'go'}})
   return {
-
+    
   }
 }
+
 const mapStateToProps = (state) => {
+  // console.log(state)
   // console.log(state.router.location.query.userId)
-  
   return {
     details:state.details,
     showBackTop: state.home.showBackTop

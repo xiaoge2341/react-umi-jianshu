@@ -1,13 +1,13 @@
 import axios from 'axios'
-import { throttle } from 'redux-saga/effects'
+// import { throttle } from 'redux-saga/effects'
 // import {} from ''
 function throttling(fn, wait, maxTimelong) {
   var timeout = null,
-      startTime = Date.parse(new Date);
+      startTime = Date.parse(new Date());
 
   return function() {
       if(timeout !== null) clearTimeout(timeout);
-      var curTime = Date.parse(new Date);
+      var curTime = Date.parse(new Date());
       if(curTime-startTime>=maxTimelong) {
           fn();
           startTime = curTime;
