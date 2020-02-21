@@ -46,10 +46,10 @@ import Right from './components/right'
 
 //注意！！！
   // mapDispatchToProps使用了dispatch之后，上面的render失去dispatch
-const mapDispatchToProps = (dispatch,location) => { 
+const mapDispatchToProps = (dispatch,{history}) => { 
   window.onmousewheel = (e) => {
-    console.log(location)
-    if(e.deltaY > 0 && location.location.pathname === '/detail') {
+    console.log('detail',history)
+    if(e.deltaY > 0 && history.location.pathname === '/detail') {
       //应用类，把作者信息换到顶部导航
       dispatch({type:'details/changeNav',NavShow:true})
     } else {

@@ -1,0 +1,139 @@
+.login {
+  .logo {
+    margin: 50px 0 0 50px;
+    img {
+      width: 100px;
+      height: 46px;
+    }
+  }
+  
+}
+
+.main {
+  width: 400px;
+  height: 565px;
+  box-sizing: border-box;
+  padding: 50px;
+  background: #fff;
+  margin:0 auto;
+  box-shadow: 0 0 8px rgba(0,0,0,.1);
+  border-radius: 5px;
+  text-align: center;
+  vertical-align: middle;
+  h4 {
+    width: 300px;
+    height: 39px;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-bottom: 50px;
+    .active {
+      color:#ea6f5a;
+      font-weight: bold;
+      border-bottom:2px solid #ea6f5a ;
+    }
+    a{
+      display: inline-block;
+      color:#969696 ;
+      padding: 0 10px 10px;
+      font-size: 18px;
+      line-height: 18px;
+    }
+    b{
+      padding:10px;
+      font-weight: 400;
+    }
+  }
+}
+
+#newUser {
+  overflow: hidden;
+  .user_name,.user_phone,.user_pwd {
+    position: relative;
+    width: 300px;
+    height: 50px;
+    background: rgba(191, 191, 191, 0.1);
+    border:1px solid #c8c8c8;
+
+    input {
+      width: 298px;
+      height: 48px;
+      padding: 4px 12px 4px 35px;
+      background-color: hsla(0,0%,71%,.1);
+      box-sizing: border-box;
+      border: none;
+    }
+    i {
+      position: absolute;
+      top:14px;
+      left:10px;
+    }
+  }
+
+
+  .remember{
+    float: left;
+    margin:15px 0;
+  }
+  .forget {
+    float: right;
+    margin: 15px 0;
+  }
+  .signUpButton {
+    clear: both;
+    width: 300px;
+    height: 43px;
+    margin-top: 20px;
+    color: #fff;
+    background: #42c02e;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+  }
+
+  .signUpMsg {
+    margin:10px 0;
+    font-size: 12px;
+    color: #969696;
+  }
+  
+}
+
+.moreSignIn {
+  margin-top: 50px;
+  h6{
+    position: relative;
+    color:#b5b5b5;
+    margin-bottom: 10px;
+    font-size: 12px;
+
+    &::before,&::after {
+      content: '';
+      border-top: 1px solid #b5b5b5;
+      position: absolute;
+      display: block;
+      width: 60px;
+      top: 10px;
+      
+    }
+    &::before {
+      left: 30px;
+    }
+    &::after {
+      right: 30px;
+    }
+  }
+
+  ul {
+    overflow: hidden;
+    display: inline-block;
+    text-align: center;
+    li {
+      float: left;
+      display: inline;
+      width: 50px;
+      height: 50px;
+      
+      line-height: 50px;
+    }
+  }
+}

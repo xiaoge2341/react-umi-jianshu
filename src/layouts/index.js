@@ -3,7 +3,11 @@ import React, {Component} from 'react'
 import { connect } from 'dva'
 import Link from 'umi/link'
 import styles from './index.less'
+import Signin from '../pages/signIn/index'
+import Signup from '../pages/signUp/index'
+import router from 'umi/router'
 import { GlobalstyleIcon } from './../assets/iconfont/iconfont.js'
+// import SimpleLayout from './SimpleLayout'
 import {
   Logo,
   Nav,
@@ -23,10 +27,18 @@ import {
   
  class BasicLayout extends Component {
    render(){
-    let {dispatch, focused, list, mouseIn, page, totalPage, headerTitle,headerWriter, location,navShow} = this.props
+    let {dispatch, focused, list, mouseIn, page, totalPage, headerTitle,headerWriter, location, navShow, login} = this.props
     // console.log(this.props)
     let userId = location.query.userId
    
+    login = localStorage.getItem('login')
+
+    //区分路由
+    if(this.props.location.pathname === '/sign_in') {
+      return <Signin></Signin>
+    }else if(this.props.location.pathname === '/sign_up') {
+      return <Signup></Signup>
+    }
     
     let navChange = navShow&&navShow ? styles.navChange : ''
     // console.log(navShow,navChange)
@@ -93,7 +105,20 @@ import {
                 <NavItem className='left active'>首页</NavItem>
               </Link>
               <NavItem className='left'>下载App</NavItem>
-              <NavItem className='right'>登录</NavItem>
+
+              {
+                login ? 
+              <NavItem className='right'
+                onClick = {()=>{
+                  localStorage.removeItem('login')
+                  router.push('/')
+                }}
+              >退出</NavItem> : 
+              <Link to = '/sign_in'><NavItem className='right'>登录</NavItem></Link>
+              }
+              
+              
+
               <NavItem className='right'>
                 <i className='iconfont'>&#xe636;</i>
               </NavItem>
@@ -167,7 +192,7 @@ import {
 }
 
 const mapStateToProps = (state) => {
-  // console.log('header state',state)
+  console.log('header state',state)
   return {
     focused:state.headers.focused,
     mouseIn:state.headers.mouseIn,
@@ -179,7 +204,10 @@ const mapStateToProps = (state) => {
     headerWriter: state.details.writer,
 
     //控制detail页鼠标滚轮上下滑的动作
-    navShow: state.details.navShow
+    navShow: state.details.navShow,
+
+    //控制登录按钮显示隐藏
+    login: state.signIn.login
   }
 }
 export default connect(mapStateToProps)(BasicLayout);

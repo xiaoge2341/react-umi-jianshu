@@ -6,7 +6,7 @@ export default {
     list:null,
     mouseIn:false,
     totalPage:1,
-    page:1
+    page:1,
   },
   reducers: {
     'focused' (state, action) {

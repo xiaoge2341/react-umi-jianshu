@@ -34,4 +34,5 @@ export default {
       },
     }],
   ],
+  history: 'hash',
 }
