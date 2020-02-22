@@ -5,6 +5,7 @@ import Link from 'umi/link'
 import styles from './index.less'
 import Signin from '../pages/signIn/index'
 import Signup from '../pages/signUp/index'
+import Write from './../pages/write/index'
 import router from 'umi/router'
 import { GlobalstyleIcon } from './../assets/iconfont/iconfont.js'
 // import SimpleLayout from './SimpleLayout'
@@ -38,6 +39,8 @@ import {
       return <Signin></Signin>
     }else if(this.props.location.pathname === '/sign_up') {
       return <Signup></Signup>
+    }else if(this.props.location.pathname === '/write') {
+      return <Write></Write>
     }
     
     let navChange = navShow&&navShow ? styles.navChange : ''
@@ -111,6 +114,7 @@ import {
               <NavItem className='right'
                 onClick = {()=>{
                   localStorage.removeItem('login')
+                  dispatch({type:'signIn/signIn',login:false})
                   router.push('/')
                 }}
               >退出</NavItem> : 
@@ -138,10 +142,13 @@ import {
             </Nav>
             <Addition>
               <Button className='reg'>注册</Button>
+              <Link to = '/write'>
                 <Button className='writting '>
                   <i className='iconfont'>&#xe608; </i> 
                     写文章
                 </Button>
+              </Link>
+                
             </Addition>
         </div>
 
@@ -192,7 +199,7 @@ import {
 }
 
 const mapStateToProps = (state) => {
-  console.log('header state',state)
+  // console.log('header state',state)
   return {
     focused:state.headers.focused,
     mouseIn:state.headers.mouseIn,
