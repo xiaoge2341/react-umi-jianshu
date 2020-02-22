@@ -141,7 +141,10 @@ import {
                           
             </Nav>
             <Addition>
-              <Button className='reg'>注册</Button>
+              <Link to = '/sign_up'>
+                <Button className='reg'>注册</Button>
+              </Link>
+              
               <Link to = '/write'>
                 <Button className='writting '>
                   <i className='iconfont'>&#xe608; </i> 
