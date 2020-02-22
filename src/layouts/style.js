@@ -1,11 +1,6 @@
 import styled from 'styled-components'
 import logoPic from './../assets/logo.jpg'
 
-export  const HeaderWrapper = styled.div`
-    position: relative;
-    height:58px;
-    border-bottom: 1px solid #f0f0f0;
-`;
 export  const Logo = styled.a`
     position:absolute;
     display:block;
@@ -32,6 +27,7 @@ export const NavItem = styled.div`
     padding:0 15px;
     font-size:17px;
     color:#333;
+    cursor:pointer;
     &.left {
         float: left;
     }
@@ -58,6 +54,7 @@ export const SearchWrapper = styled.div`
         line-height: 30px;
         text-align: center;
         border-radius:15px;
+        cursor:pointer;
         &.focused {
             background: #777;
             color:#fff;
@@ -97,7 +94,7 @@ export const SearchInfo = styled.div`
     left: 0;
     top: 56px;
     width:240px;
-    
+    background:#fff;
     padding: 0 20px;
     box-shadow: 0 0 8px rgba(0,0,0,.2)
     
@@ -106,12 +103,24 @@ export const SearchInfoTitle = styled.div`
     margin: 20px 0 15px 0;
     line-height: 20px;
     font-size: 15px;
-    color:#969696
-
+    color:#969696;
+    
 `;
 export const SearchInfoSwitch = styled.span`
     float: right;
+    display:block;
     font-size: 14px;
+    cursor:pointer;
+    .spin{
+        float:left;
+        position:relative;
+        display:block;
+        margin: -1px -10px 0 0;
+        transition: transform .5s ease 0s;
+        transform-origin:center center;
+        transform: rotate(0deg);
+        
+    }
 `;
 export const SearchInfoItem = styled.a`
     display: block;
@@ -142,14 +151,15 @@ export const Button = styled.div`
     border-radius: 19px;
     border:1px solid #ec6149;
     font-size: 14px;
+    cursor:pointer;
     &.reg {
         color: #ec6149;
     }
     &.writting {
+        
         color: #fff;
         background: #ec6149;
     }
 `;
-
 
 
